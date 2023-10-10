@@ -1,0 +1,237 @@
+[org/gnome/Weather]
+locations=[<(uint32 2, <('Breda', 'EHGR', true, [(0.90000812342950687, 0.086102903947289422)], [(0.90041536110387466, 0.083426738245328952)])>)>]
+window-height=1312
+window-maximized=false
+window-width=2496
+
+[org/gnome/clocks]
+world-clocks=[{'location': <(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>}, {'location': <(uint32 2, <('Dubai', 'OMDB', true, [(0.44069563612856821, 0.96574884695243146)], [(0.44073441734454749, 0.9648180105024653)])>)>}, {'location': <(uint32 2, <('Hanoi', 'VVNB', true, [(0.36681003694523912, 1.8465583486100006)], [(0.36710091351837648, 1.8474310132359977)])>)>}]
+
+[org/gnome/desktop/interface]
+clock-show-weekday=true
+color-scheme='prefer-dark'
+enable-animations=true
+enable-hot-corners=false
+font-antialiasing='grayscale'
+font-hinting='slight'
+gtk-theme='Adwaita'
+icon-theme='Papirus-Dark'
+
+[org/gnome/desktop/peripherals/mouse]
+accel-profile='flat'
+speed=0.24
+
+[org/gnome/desktop/peripherals/touchpad]
+two-finger-scrolling-enabled=true
+
+[org/gnome/desktop/wm/keybindings]
+begin-resize=@as []
+close=['<Alt>F4']
+cycle-group=@as []
+cycle-group-backward=@as []
+cycle-panels=@as []
+cycle-panels-backward=@as []
+cycle-windows=@as []
+cycle-windows-backward=@as []
+maximize=@as []
+minimize=@as []
+move-to-monitor-down=@as []
+move-to-monitor-left=@as []
+move-to-monitor-right=@as []
+move-to-monitor-up=@as []
+move-to-workspace-1=@as []
+move-to-workspace-last=@as []
+move-to-workspace-left=@as []
+move-to-workspace-right=@as []
+switch-group=@as []
+switch-group-backward=@as []
+switch-input-source=@as []
+switch-input-source-backward=@as []
+switch-panels=@as []
+switch-panels-backward=@as []
+switch-to-workspace-1=@as []
+switch-to-workspace-3=@as []
+switch-to-workspace-last=@as []
+switch-to-workspace-left=['<Control><Alt>Left']
+switch-to-workspace-right=['<Control><Alt>Right']
+toggle-fullscreen=@as []
+unmaximize=@as []
+
+[org/gnome/desktop/wm/preferences]
+button-layout='appmenu:minimize,close'
+mouse-button-modifier='disabled'
+
+[org/gnome/mutter]
+center-new-windows=true
+edge-tiling=false
+overlay-key='Super_R'
+
+[org/gnome/mutter/keybindings]
+toggle-tiled-left=@as []
+toggle-tiled-right=@as []
+
+[org/gnome/settings-daemon/plugins/media-keys]
+magnifier=@as []
+magnifier-zoom-in=@as []
+magnifier-zoom-out=@as []
+screenreader=@as []
+screensaver=@as []
+search=['<Super>space']
+
+[org/gnome/settings-daemon/plugins/power]
+power-button-action='suspend'
+sleep-inactive-ac-timeout=7200
+
+[org/gnome/shell]
+command-history=['r']
+disabled-extensions=['window-list@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']
+enabled-extensions=['dash-to-dock@micxgx.gmail.com', 'just-perfection-desktop@just-perfection', 'windowIsReady_Remover@nunofarruca@gmail.com', 'trayIconsReloaded@selfmade.pl', 'appindicatorsupport@rgcjonas.gmail.com', 'forge@jmmaranan.com']
+favorite-apps=['org.gnome.Nautilus.desktop', 'org.mozilla.firefox.desktop', 'org.gnome.Console.desktop', 'org.manjaro.pamac.manager.desktop']
+
+[org/gnome/shell/extensions/dash-to-dock]
+animate-show-apps=true
+apply-custom-theme=false
+apply-glossy-effect=false
+background-color='rgb(61,56,70)'
+background-opacity=0.69999999999999996
+custom-background-color=true
+custom-theme-customize-running-dots=false
+custom-theme-running-dots-border-color='rgb(255,255,255)'
+custom-theme-running-dots-border-width=0
+custom-theme-running-dots-color='rgb(255,255,255)'
+custom-theme-shrink=true
+dash-max-icon-size=32
+dock-position='BOTTOM'
+extend-height=false
+height-fraction=0.90000000000000002
+hot-keys=false
+icon-size-fixed=false
+intellihide-mode='FOCUS_APPLICATION_WINDOWS'
+preferred-monitor=-2
+preferred-monitor-by-connector='DP-2'
+preview-size-scale=1.0
+running-indicator-dominant-color=true
+running-indicator-style='DASHES'
+show-icons-emblems=true
+show-show-apps-button=false
+show-trash=false
+transparency-mode='FIXED'
+unity-backlit-items=false
+
+[org/gnome/shell/extensions/forge]
+auto-split-enabled=true
+css-last-update=uint32 37
+css-updated='1696965960568'
+dnd-center-layout='tabbed'
+focus-border-toggle=false
+preview-hint-enabled=true
+showtab-decoration-enabled=true
+stacked-tiling-mode-enabled=true
+tabbed-tiling-mode-enabled=true
+tiling-mode-enabled=true
+window-gap-size=uint32 16
+window-gap-size-increment=uint32 1
+workspace-skip-tile=''
+
+[org/gnome/shell/extensions/forge/keybindings]
+con-split-horizontal=['<Control><Super>h']
+con-split-layout-toggle=['<Control><Super>g']
+con-split-vertical=['<Control><Super>v']
+con-stacked-layout-toggle=['<Shift><Super>s']
+con-tabbed-layout-toggle=['<Shift><Super>t']
+con-tabbed-showtab-decoration-toggle=['<Control><Alt>y']
+focus-border-toggle=['<Control><Super>b']
+mod-mask-mouse-tile='None'
+prefs-tiling-toggle=['<Super>w']
+window-focus-down=['<Super>k']
+window-focus-left=['<Super>j']
+window-focus-right=['<Super>l']
+window-focus-up=['<Super>i']
+window-gap-size-decrease=['<Control><Super>minus']
+window-gap-size-increase=['<Control><Super>plus']
+window-move-down=['<Shift><Super>k']
+window-move-left=['<Shift><Super>j']
+window-move-right=['<Shift><Super>l']
+window-move-up=['<Shift><Super>i']
+window-resize-bottom-decrease=['<Shift><Control><Super>i']
+window-resize-bottom-increase=['<Control><Super>u']
+window-resize-left-decrease=['<Shift><Control><Super>o']
+window-resize-left-increase=['<Control><Super>y']
+window-resize-right-decrease=['<Shift><Control><Super>y']
+window-resize-right-increase=['<Control><Super>o']
+window-resize-top-decrease=['<Shift><Control><Super>u']
+window-resize-top-increase=['<Control><Super>i']
+window-snap-center=['<Control><Alt>c']
+window-snap-one-third-left=['<Control><Alt>d']
+window-snap-one-third-right=['<Control><Alt>g']
+window-snap-two-third-left=['<Control><Alt>e']
+window-snap-two-third-right=['<Control><Alt>t']
+window-swap-down=['<Control><Super>k']
+window-swap-last-active=['<Super>Return']
+window-swap-left=['<Control><Super>j']
+window-swap-right=['<Control><Super>l']
+window-swap-up=['<Control><Super>i']
+window-toggle-always-float=['<Shift><Super>c']
+window-toggle-float=['<Shift><Super>g']
+workspace-active-tile-toggle=['<Shift><Super>w']
+
+[org/gnome/shell/extensions/just-perfection]
+accessibility-menu=true
+activities-button=true
+app-menu=false
+app-menu-icon=true
+background-menu=true
+clock-menu=true
+controls-manager-spacing-size=0
+dash=true
+dash-app-running=true
+dash-icon-size=0
+dash-separator=true
+double-super-to-appgrid=true
+keyboard-layout=true
+osd=true
+overlay-key=true
+panel=true
+panel-in-overview=true
+panel-notification-icon=true
+power-icon=true
+quick-settings=true
+ripple-box=true
+search=true
+show-apps-button=true
+startup-status=1
+theme=true
+window-demands-attention-focus=false
+window-picker-icon=true
+window-preview-caption=true
+window-preview-close-button=true
+workspace=true
+workspace-background-corner-size=0
+workspace-popup=true
+workspace-switcher-should-show=false
+workspaces-in-app-grid=true
+
+[org/gnome/shell/extensions/trayIconsReloaded]
+icon-margin-horizontal=0
+icon-padding-horizontal=8
+icon-size=16
+invoke-to-workspace=false
+position-weight=0
+tray-margin-left=0
+wine-behavior=false
+
+[org/gnome/shell/keybindings]
+focus-active-notification=@as []
+screenshot=@as []
+screenshot-window=@as []
+show-screenshot-ui=['<Shift><Control><Alt>p']
+toggle-application-view=@as []
+toggle-message-tray=@as []
+toggle-quick-settings=@as []
+
+[org/gnome/shell/weather]
+automatic-location=true
+locations=[<(uint32 2, <('Breda', 'EHGR', true, [(0.90000812342950687, 0.086102903947289422)], [(0.90041536110387466, 0.083426738245328952)])>)>]
+
+[org/gnome/shell/world-clocks]
+locations=[<(uint32 2, <('New York', 'KNYC', true, [(0.71180344078725644, -1.2909618758762367)], [(0.71059804659265924, -1.2916478949920254)])>)>, <(uint32 2, <('Dubai', 'OMDB', true, [(0.44069563612856821, 0.96574884695243146)], [(0.44073441734454749, 0.9648180105024653)])>)>, <(uint32 2, <('Hanoi', 'VVNB', true, [(0.36681003694523912, 1.8465583486100006)], [(0.36710091351837648, 1.8474310132359977)])>)>]
