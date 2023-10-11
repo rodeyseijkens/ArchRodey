@@ -3,5 +3,7 @@ autojump
 dxvk-bin
 nerd-fonts-fira-code
 ocs-url
+oh-my-zsh-git
+pamac-all
 plymouth-git
 ttf-meslo
