@@ -52,6 +52,18 @@ fi
 
 export PATH=$PATH:~/.local/bin
 
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sed -n '/'$INSTALL_TYPE'/q;p' ~/ArchRodey/pkg-files/flatpak-pkgs.txt | while read line
+do
+  if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]
+  then
+    # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
+    continue
+  fi
+  echo "INSTALLING: ${line}"
+  flatpak install flathub ${line} --assumeyes --noninteractive
+done
+
 # Theming DE if user chose FULL installation
 if [[ $INSTALL_TYPE == "FULL" ]]; then
   if [[ $DESKTOP_ENV == "kde" ]]; then
