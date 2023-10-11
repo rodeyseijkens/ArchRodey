@@ -7,3 +7,4 @@ oh-my-zsh-git
 pamac-all
 plymouth-git
 ttf-meslo
+visual-studio-code-bin

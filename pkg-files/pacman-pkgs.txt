@@ -31,7 +31,6 @@ bluez-libs
 bluez-utils
 bridge-utils
 btrfs-progs
-code
 cronie
 cups
 dialog
