@@ -5,20 +5,20 @@
 # @brief User customizations and AUR package installation.
 echo -ne "
 -------------------------------------------------------------------------
-   █████╗ ██████╗  ██████╗██╗  ██╗████████╗██╗████████╗██╗   ██╗███████╗
-  ██╔══██╗██╔══██╗██╔════╝██║  ██║╚══██╔══╝██║╚══██╔══╝██║   ██║██╔════╝
-  ███████║██████╔╝██║     ███████║   ██║   ██║   ██║   ██║   ██║███████╗
-  ██╔══██║██╔══██╗██║     ██╔══██║   ██║   ██║   ██║   ██║   ██║╚════██║
-  ██║  ██║██║  ██║╚██████╗██║  ██║   ██║   ██║   ██║   ╚██████╔╝███████║
-  ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝   ╚═╝   ╚═╝   ╚═╝    ╚═════╝ ╚══════╝
+ █████╗ ██████╗  ██████╗██╗  ██╗██████╗  ██████╗ ██████╗ ███████╗██╗   ██╗
+██╔══██╗██╔══██╗██╔════╝██║  ██║██╔══██╗██╔═══██╗██╔══██╗██╔════╝╚██╗ ██╔╝
+███████║██████╔╝██║     ███████║██████╔╝██║   ██║██║  ██║█████╗   ╚████╔╝ 
+██╔══██║██╔══██╗██║     ██╔══██║██╔══██╗██║   ██║██║  ██║██╔══╝    ╚██╔╝  
+██║  ██║██║  ██║╚██████╗██║  ██║██║  ██║╚██████╔╝██████╔╝███████╗   ██║   
+╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═════╝ ╚══════╝   ╚═╝             
 -------------------------------------------------------------------------
                     Automated Arch Linux Installer
-                        SCRIPTHOME: ArchTitus
+                        SCRIPTHOME: ArchRodey
 -------------------------------------------------------------------------
 
 Installing AUR Softwares
 "
-source $HOME/ArchTitus/configs/setup.conf
+source $HOME/ArchRodey/configs/setup.conf
 
 sed -n '/'$INSTALL_TYPE'/q;p' ~/ArchRodey/pkg-files/${DESKTOP_ENV}.txt | while read line
 do
@@ -39,7 +39,7 @@ if [[ ! $AUR_HELPER == none ]]; then
   makepkg -si --noconfirm
   # sed $INSTALL_TYPE is using install type to check for MINIMAL installation, if it's true, stop
   # stop the script and move on, not installing any more packages below that line
-  sed -n '/'$INSTALL_TYPE'/q;p' ~/ArchTitus/pkg-files/aur-pkgs.txt | while read line
+  sed -n '/'$INSTALL_TYPE'/q;p' ~/ArchRodey/pkg-files/aur-pkgs.txt | while read line
   do
     if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]; then
       # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
@@ -51,10 +51,10 @@ if [[ ! $AUR_HELPER == none ]]; then
 
 
   ## If file exists, install AUR packages
-  if [[ -f ~/ArchTitus/pkg-files/aur-pkgs-${DESKTOP_ENV}.txt ]]; then
+  if [[ -f ~/ArchRodey/pkg-files/aur-pkgs-${DESKTOP_ENV}.txt ]]; then
     # sed $INSTALL_TYPE is using install type to check for MINIMAL installation, if it's true, stop
     # stop the script and move on, not installing any more packages below that line
-    sed -n '/'$INSTALL_TYPE'/q;p' ~/ArchTitus/pkg-files/aur-pkgs-${DESKTOP_ENV}.txt | while read line
+    sed -n '/'$INSTALL_TYPE'/q;p' ~/ArchRodey/pkg-files/aur-pkgs-${DESKTOP_ENV}.txt | while read line
     do
       if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]; then
         # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
@@ -83,9 +83,9 @@ done
 # Theming DE if user chose FULL installation
 if [[ ${DESKTOP_ENV} == "kde" ]]; then
   if [[ ${INSTALL_TYPE} == "FULL" ]]; then
-   cp -r ~/ArchTitus/configs/.config/* ~/.config/
+   cp -r ~/ArchRodey/configs/.config/* ~/.config/
     pip install konsave
-    konsave -i ~/ArchTitus/configs/kde.knsv
+    konsave -i ~/ArchRodey/configs/kde.knsv
     sleep 1
     konsave -a kde
   fi
