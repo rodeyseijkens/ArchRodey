@@ -68,34 +68,6 @@ fi
 
 export PATH=$PATH:~/.local/bin
 
-flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sed -n '/'$INSTALL_TYPE'/q;p' ~/ArchRodey/pkg-files/flatpak-pkgs.txt | while read line
-do
-  if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]
-  then
-    # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
-    continue
-  fi
-  echo "INSTALLING: ${line}"
-  flatpak install flathub ${line} --assumeyes --noninteractive
-done
-
-# Theming DE if user chose FULL installation
-if [[ ${DESKTOP_ENV} == "kde" ]]; then
-  if [[ ${INSTALL_TYPE} == "FULL" ]]; then
-   cp -r ~/ArchRodey/configs/.config/* ~/.config/
-    pip install konsave
-    konsave -i ~/ArchRodey/configs/kde.knsv
-    sleep 1
-    konsave -a kde
-  fi
-
-elif [[ "${DESKTOP_ENV}" == "gnome" ]]; then
-  if [[ ${INSTALL_TYPE} == "FULL" ]]; then
-    dconf load / < ~/ArchRodey/configs/dconf.txt
-  fi
-fi
-
 echo -ne "
 -------------------------------------------------------------------------
                     SYSTEM READY FOR 3-post-setup.sh

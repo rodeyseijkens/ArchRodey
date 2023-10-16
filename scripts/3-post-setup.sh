@@ -69,6 +69,35 @@ else
   fi
 fi
 
+
+echo -ne "
+-------------------------------------------------------------------------
+               Theming and DE specific Configurations
+-------------------------------------------------------------------------
+"
+if [[ ${DESKTOP_ENV} == "kde" ]]; then
+  if [[ ${INSTALL_TYPE} == "FULL" ]]; then
+    echo [Theme] >>  /etc/sddm.conf
+    echo Current=Nordic >> /etc/sddm.conf
+
+    cp -r ~/ArchRodey/configs/.config/* ~/.config/
+    pip install konsave
+    konsave -i ~/ArchRodey/configs/kde.knsv
+    sleep 1
+    konsave -a kde
+  fi
+
+elif [[ "${DESKTOP_ENV}" == "gnome" ]]; then
+  if [[ ${INSTALL_TYPE} == "FULL" ]]; then
+    # Default dconf settings
+    cp -r ~/ArchRodey/configs/etc/donf/* /etc/dconf/
+    dconf update
+
+    # Gnome Theme for Firefox
+    curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
+  fi
+fi
+
 echo -ne "
 -------------------------------------------------------------------------
                     Enabling Essential Services
@@ -92,22 +121,20 @@ echo "  Avahi enabled"
 
 echo -ne "
 -------------------------------------------------------------------------
-               Enabling (and Theming) Plymouth Boot Splash
+               Installing Flatpak Packages
 -------------------------------------------------------------------------
 "
-# PLYMOUTH_THEMES_DIR="$HOME/ArchRodey/configs/usr/share/plymouth/themes"
-# PLYMOUTH_THEME="arch-glow" # can grab from config later if we allow selection
-# mkdir -p /usr/share/plymouth/themes
-# echo 'Installing Plymouth theme...'
-# cp -rf ${PLYMOUTH_THEMES_DIR}/${PLYMOUTH_THEME} /usr/share/plymouth/themes
-# if  [[ $FS == "luks"]]; then
-#   sed -i 's/HOOKS=(base udev*/& plymouth/' /etc/mkinitcpio.conf # add plymouth after base udev
-#   sed -i 's/HOOKS=(base udev \(.*block\) /&plymouth-/' /etc/mkinitcpio.conf # create plymouth-encrypt after block hook
-# else
-#   sed -i 's/HOOKS=(base udev*/& plymouth/' /etc/mkinitcpio.conf # add plymouth after base udev
-# fi
-# plymouth-set-default-theme -R arch-glow # sets the theme and runs mkinitcpio
-# echo 'Plymouth theme installed'
+flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+sed -n '/'$INSTALL_TYPE'/q;p' ~/ArchRodey/pkg-files/flatpak-pkgs.txt | while read line
+do
+  if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]
+  then
+    # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
+    continue
+  fi
+  echo "INSTALLING: ${line}"
+  flatpak install flathub ${line} --user --assumeyes --noninteractive
+done
 
 echo -ne "
 -------------------------------------------------------------------------
