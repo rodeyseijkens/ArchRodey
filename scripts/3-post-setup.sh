@@ -92,10 +92,14 @@ elif [[ "${DESKTOP_ENV}" == "gnome" ]]; then
     # Default dconf settings
     cp -r ~/ArchRodey/configs/etc/donf/* /etc/dconf/
     dconf update
-
-    # Gnome Theme for Firefox
-    curl -s -o- https://raw.githubusercontent.com/rafaelmardojai/firefox-gnome-theme/master/scripts/install-by-curl.sh | bash
   fi
+fi
+
+if [[ ! "${DESKTOP_ENV}" == "server"  ]]; then
+  # Copy the autostart script to the new user's autostart folder
+  mkdir -p ~/.config/autostart/
+  cp -r ~/ArchRodey/scripts/first-boot.sh ~/.config/autostart/
+  chmod +x ~/.config/autostart/first-boot.sh
 fi
 
 echo -ne "
@@ -118,23 +122,6 @@ systemctl enable bluetooth
 echo "  Bluetooth enabled"
 systemctl enable avahi-daemon.service
 echo "  Avahi enabled"
-
-echo -ne "
--------------------------------------------------------------------------
-               Installing Flatpak Packages
--------------------------------------------------------------------------
-"
-flatpak --user remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-sed -n '/'$INSTALL_TYPE'/q;p' ~/ArchRodey/pkg-files/flatpak-pkgs.txt | while read line
-do
-  if [[ ${line} == '--END OF MINIMAL INSTALL--' ]]
-  then
-    # If selected installation type is FULL, skip the --END OF THE MINIMAL INSTALLATION-- line
-    continue
-  fi
-  echo "INSTALLING: ${line}"
-  flatpak install flathub ${line} --user --assumeyes --noninteractive
-done
 
 echo -ne "
 -------------------------------------------------------------------------
