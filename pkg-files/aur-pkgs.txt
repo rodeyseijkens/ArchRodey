@@ -1,10 +1,10 @@
 --END OF MINIMAL INSTALL--
 autojump
 dxvk-bin
-nerd-fonts-fira-code
 ocs-url
 oh-my-zsh-git
-pamac-all
+pamac-nosnap
 plymouth-git
 ttf-meslo
+ttf-meslo-nerd
 visual-studio-code-bin

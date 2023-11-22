@@ -92,14 +92,19 @@ elif [[ "${DESKTOP_ENV}" == "gnome" ]]; then
     # Default dconf settings
     cp -r ~/ArchRodey/configs/etc/donf/* /etc/dconf/
     dconf update
+    chown -R root:root /etc
   fi
 fi
 
 if [[ ! "${DESKTOP_ENV}" == "server"  ]]; then
+  echo -ne "Copy auto start scripts"
   # Copy the autostart script to the new user's autostart folder
-  mkdir -p ~/.config/autostart/
-  cp -r ~/ArchRodey/scripts/first-boot.sh ~/.config/autostart/
-  chmod +x ~/.config/autostart/first-boot.sh
+  mkdir -p /home/$USERNAME/.config/autostart/
+  cp -r ~/ArchRodey/configs/autostart/* /home/$USERNAME/.config/autostart/
+  chmod +x /home/$USERNAME/.config/autostart/first-boot.sh
+  chmod +x /home/$USERNAME/.config/autostart/first-boot.desktop
+  sed -i "s|~|/home/$USERNAME|g" /home/$USERNAME/.config/autostart/first-boot.desktop
+  chown -R $USERNAME: /home/$USERNAME/.config
 fi
 
 echo -ne "

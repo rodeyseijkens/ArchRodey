@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=first-boot
+Comment=Run first-boot in terminal
+Exec=~/.config/autostart/first-boot.sh
+Terminal=true
+Type=Application

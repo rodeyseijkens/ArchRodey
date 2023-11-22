@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Redirect standard output and standard error to the log file
-exec &>> "~/first-boot.log"
-
 echo -ne "
 -------------------------------------------------------------------------
                Installing Flatpak Packages
@@ -11,10 +8,14 @@ echo -ne "
 # List of packages to install
 packages=(
   com.discordapp.Discord
-  com.gitub.tchx84.Flatseal
+  com.github.tchx84.Flatseal
   com.mattjakeman.ExtensionManager
   com.spotify.Client
   com.valvesoftware.Steam
+  com.valvesoftware.Steam.CompatibilityTool.Boxtron
+  com.valvesoftware.Steam.Utility.gamescope
+  com.valvesoftware.Steam.Utility.protontricks
+  com.valvesoftware.SteamLink
   io.github.flattool.Warehouse
   org.gnome.Boxes
   org.mozilla.firefox
@@ -22,10 +23,11 @@ packages=(
 )
 
 # Install each package
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
 for package in "${packages[@]}"
 do
   echo "INSTALLING: $package"
-  flatpak install flathub "$package" --user --assumeyes --noninteractive
+  flatpak install flathub "$package" --assumeyes --noninteractive
 done
 
 echo -ne "
@@ -41,8 +43,24 @@ fi
 
 echo -ne "
 -------------------------------------------------------------------------
+               Misc. Configurations
+-------------------------------------------------------------------------
+"
+# Fix Firefox font rendering
+cp "/etc/fonts/conf.d/*.conf" "$HOME/.var/app/org.mozilla.firefox/config/fontconfig/conf.d/"
+# Nautlius as default file manager
+xdg-mime default org.gnome.Nautilus.desktop inode/directory
+# Install powerlevel10k theme for zsh
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
+# Zsh files
+mv "$HOME/.config/autostart/.zshrc" "$HOME/.config/autostart/.zshrc_history" "$HOME"
+
+echo -ne "
+-------------------------------------------------------------------------
                Completed installation
 -------------------------------------------------------------------------
 "
 # Auto delete this current script after installation
-rm -- "$0"
+rm -- "$HOME/.config/autostart/first-boot.desktop"
+rm -- "$HOME/.config/autostart/first-boot.sh"

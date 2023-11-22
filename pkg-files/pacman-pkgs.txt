@@ -77,8 +77,6 @@ python-pip
 swtpm
 terminus-font
 traceroute
-ttf-droid
-ttf-hack
 ttf-roboto
 ufw
 unrar
