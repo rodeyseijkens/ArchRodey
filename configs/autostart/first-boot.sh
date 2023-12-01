@@ -46,15 +46,19 @@ echo -ne "
                Misc. Configurations
 -------------------------------------------------------------------------
 "
-# Fix Firefox font rendering
-cp "/etc/fonts/conf.d/*.conf" "$HOME/.var/app/org.mozilla.firefox/config/fontconfig/conf.d/"
-# Nautlius as default file manager
-xdg-mime default org.gnome.Nautilus.desktop inode/directory
-# Install powerlevel10k theme for zsh
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+echo "Fixing Firefox font rendering"
+mkdir -p $HOME/.var/app/org.mozilla.firefox/config/fontconfig/
+mv $HOME/.config/autostart/data/fonts.conf $HOME/.var/app/org.mozilla.firefox/config/fontconfig/
 
-# Zsh files
-mv "$HOME/.config/autostart/.zshrc" "$HOME/.config/autostart/.zshrc_history" "$HOME"
+echo "Setting Nautilus as default file manager"
+xdg-mime default org.gnome.Nautilus.desktop inode/directory
+
+echo "Installing powerlevel10k theme for zsh"
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git $HOME/.config/oh-my-zsh/themes/powerlevel10k
+
+echo "Installing zsh files and setting zsh as default shell"
+cp -r $HOME/.config/autostart/data/* $HOME/
+chsh -s $(which zsh)
 
 echo -ne "
 -------------------------------------------------------------------------
@@ -62,5 +66,6 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 # Auto delete this current script after installation
-rm -- "$HOME/.config/autostart/first-boot.desktop"
-rm -- "$HOME/.config/autostart/first-boot.sh"
+rm -- $HOME/.config/autostart/first-boot.desktop
+rm -- $HOME/.config/autostart/first-boot.sh
+rm -rf $HOME/.config/autostart/data
