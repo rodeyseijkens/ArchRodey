@@ -83,10 +83,9 @@ power-button-action='suspend'
 sleep-inactive-ac-timeout=7200
 
 [org/gnome/shell]
-command-history=['r']
 disabled-extensions=['window-list@gnome-shell-extensions.gcampax.github.com', 'windowsNavigator@gnome-shell-extensions.gcampax.github.com', 'workspace-indicator@gnome-shell-extensions.gcampax.github.com', 'places-menu@gnome-shell-extensions.gcampax.github.com', 'apps-menu@gnome-shell-extensions.gcampax.github.com', 'launch-new-instance@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com']
-enabled-extensions=['dash-to-dock@micxgx.gmail.com', 'just-perfection-desktop@just-perfection', 'windowIsReady_Remover@nunofarruca@gmail.com', 'trayIconsReloaded@selfmade.pl', 'appindicatorsupport@rgcjonas.gmail.com', 'forge@jmmaranan.com']
-favorite-apps=['org.gnome.Nautilus.desktop', 'org.mozilla.firefox.desktop', 'org.gnome.Console.desktop', 'org.manjaro.pamac.manager.desktop']
+enabled-extensions=['dash-to-dock@micxgx.gmail.com', 'just-perfection-desktop@just-perfection', 'windowIsReady_Remover@nunofarruca@gmail.com', 'appindicatorsupport@rgcjonas.gmail.com', 'forge@jmmaranan.com']
+favorite-apps=['org.gnome.Nautilus.desktop', 'org.mozilla.firefox.desktop', 'code.desktop', 'org.gnome.Console.desktop', 'com.discordapp.Discord.desktop', 'com.valvesoftware.Steam.desktop', 'org.manjaro.pamac.manager.desktop']
 
 [org/gnome/shell/extensions/dash-to-dock]
 animate-show-apps=true
@@ -210,15 +209,6 @@ workspace-background-corner-size=0
 workspace-popup=true
 workspace-switcher-should-show=false
 workspaces-in-app-grid=true
-
-[org/gnome/shell/extensions/trayIconsReloaded]
-icon-margin-horizontal=0
-icon-padding-horizontal=8
-icon-size=16
-invoke-to-workspace=false
-position-weight=0
-tray-margin-left=0
-wine-behavior=false
 
 [org/gnome/shell/keybindings]
 focus-active-notification=@as []
