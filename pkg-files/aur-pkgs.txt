@@ -8,3 +8,4 @@ plymouth-git
 ttf-meslo
 ttf-meslo-nerd
 visual-studio-code-bin
+steam-devices
